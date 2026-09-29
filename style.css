@@ -1,0 +1,382 @@
+:root {
+  --purple-100: hsl(254, 88%, 90%);
+  --purple-500: hsl(256, 67%, 59%);
+  --yellow-100: hsl(31, 66%, 93%);
+  --yellow-500: hsl(39, 100%, 71%);
+  --white: hsl(0, 0%, 100%);
+  --black: hsl(0, 0%, 7%);
+  --page-bg: hsl(0, 0%, 96%);
+
+  --radius: 0.75rem;
+  --gap: 2rem;
+
+  --h-sm: 1.75rem;
+  --h-lg: 2rem;
+}
+
+@font-face {
+  font-family: "DM Sans";
+  src: url("./assets/fonts/DMSans-VariableFont_opsz,wght.ttf")
+    format("truetype");
+  font-weight: 100 1000;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DM Sans";
+  src: url("./assets/fonts/DMSans-Italic-VariableFont_opsz,wght.ttf")
+    format("truetype");
+  font-weight: 100 1000;
+  font-style: italic;
+  font-display: swap;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-size: 1.125rem; /* 18px */
+  font-weight: 400;
+  line-height: 1.25;
+  color: var(--black);
+  background: var(--page-bg);
+}
+
+h1,
+h2 {
+  font-weight: 500;
+  line-height: 0.92;
+  letter-spacing: -0.05em;
+}
+
+em {
+  font-style: italic;
+}
+
+.bento {
+  width: min(70rem, 100% - 2rem);
+  margin-inline: auto;
+  padding-block: 2rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--gap);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 1.5rem;
+  border-radius: var(--radius);
+}
+
+.card--hero {
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  color: var(--white);
+  background: var(--purple-500);
+}
+
+.card--hero h1 {
+  font-size: clamp(2.25rem, 12.5vw, 2.75rem);
+  text-wrap: balance;
+}
+
+.highlight {
+  color: var(--yellow-500);
+}
+
+.hero__stars {
+  width: 11.6rem;
+  margin-top: -0.25rem;
+}
+
+.card--manage {
+  gap: 1.25rem;
+  padding: 1.5rem 1rem;
+  background: var(--white);
+}
+
+.manage__badges {
+  width: min(100%, 19.75rem);
+}
+
+.card--manage h2,
+.card--consistent h2,
+.card--schedule h2 {
+  font-size: var(--h-sm);
+}
+
+.card--consistent {
+  gap: 1rem;
+  padding: 1.5rem 1rem 0;
+  background: var(--yellow-500);
+}
+
+.consistent__calendar {
+  flex-shrink: 0;
+  width: 13rem;
+  margin-bottom: -1.5rem;
+}
+
+.card--schedule {
+  gap: 1.5rem;
+  padding: 2rem 1rem 1.5rem;
+  text-align: center;
+  background: var(--purple-100);
+}
+
+.schedule__chart {
+  width: 100%;
+}
+
+.card--schedule p {
+  padding-inline: 1rem;
+}
+
+.card--grow {
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  text-align: center;
+  color: var(--white);
+  background: var(--purple-500);
+}
+
+.grow__stats {
+  width: 14rem;
+}
+
+.card--grow h2,
+.card--create h2,
+.card--write h2 {
+  font-size: var(--h-lg);
+}
+
+.card--grow h2 {
+  max-width: 8em;
+}
+
+.card--audience {
+  background: var(--white);
+}
+
+.audience__stat {
+  font-size: 3.5rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.06em;
+}
+
+.audience__label {
+  margin-top: 0.75rem;
+}
+
+.audience__avatars {
+  width: 11.25rem;
+  margin-top: 1.5rem;
+}
+
+.card--create {
+  gap: 1.5rem;
+  min-height: 14.5rem;
+  padding: 2rem;
+  background: var(--yellow-100);
+}
+
+.card--create h2 em {
+  color: var(--purple-500);
+}
+
+.create__button {
+  width: 12rem;
+}
+
+.card--write {
+  gap: 1.5rem;
+  background: var(--yellow-500);
+}
+
+.write__panel {
+  padding: 0.5rem 0 0.5rem 0.5rem;
+  border-radius: var(--radius);
+  background: var(--white);
+}
+
+.write__chat {
+  width: 13.6rem;
+  max-width: none;
+}
+
+@media (min-width: 40rem) {
+  .bento {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+      "hero hero"
+      "manage consistent"
+      "schedule grow"
+      "audience create"
+      "write write";
+  }
+
+  .card--hero {
+    grid-area: hero;
+  }
+  .card--manage {
+    grid-area: manage;
+  }
+  .card--consistent {
+    grid-area: consistent;
+  }
+  .card--schedule {
+    grid-area: schedule;
+  }
+  .card--grow {
+    grid-area: grow;
+  }
+  .card--audience {
+    grid-area: audience;
+  }
+  .card--create {
+    grid-area: create;
+  }
+  .card--write {
+    grid-area: write;
+  }
+
+  .write__panel {
+    max-width: 24rem;
+  }
+}
+
+@media (min-width: 70rem) {
+  :root {
+    --h-sm: clamp(1.5rem, 2.2vw, 2rem);
+    --h-lg: clamp(2rem, 2.8vw, 2.5rem);
+  }
+
+  .bento {
+    width: min(70rem, 100% - 4rem);
+    padding-block: 5rem;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 324px 58px 156px 246px;
+    grid-template-areas:
+      "create hero hero schedule"
+      "create manage consistent schedule"
+      "write manage consistent schedule"
+      "write audience grow grow";
+  }
+
+  .card--hero {
+    gap: 1.25rem;
+    padding: 2rem 1.5rem;
+  }
+
+  .card--hero h1 {
+    font-size: clamp(2.75rem, 4.4vw, 4rem);
+    line-height: 0.9;
+  }
+
+  .card--create {
+    min-height: 0;
+    padding: 2rem;
+  }
+
+  .card--schedule {
+    padding: 2rem;
+    text-align: left;
+  }
+
+  .card--schedule h2 {
+    font-size: clamp(1.5rem, 2.2vw, 2rem);
+  }
+
+  .schedule__chart {
+    flex-shrink: 0;
+    width: 22.6rem;
+    max-width: none;
+  }
+
+  .card--schedule p {
+    padding-inline: 0;
+    line-height: 1.15;
+  }
+
+  .card--manage {
+    justify-content: space-between;
+    padding: 1.5rem;
+  }
+
+  .manage__badges {
+    width: 19.75rem;
+    max-width: none;
+  }
+
+  .card--consistent {
+    padding: 1.5rem 1.5rem 0;
+  }
+
+  .consistent__calendar {
+    width: 100%;
+    margin-bottom: 0;
+  }
+
+  .card--audience {
+    padding: 1.5rem;
+  }
+
+  .audience__stat {
+    font-size: 4rem;
+  }
+
+  .audience__avatars {
+    margin-top: auto;
+  }
+
+  .card--grow {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 0.9rem;
+    padding: 1.5rem 1.5rem 1rem;
+    text-align: left;
+  }
+
+  .grow__stats {
+    flex-shrink: 0;
+    width: 14.2rem;
+  }
+
+  .card--grow h2 {
+    max-width: none;
+  }
+
+  .card--write {
+    justify-content: space-between;
+  }
+
+  .write__panel {
+    max-width: none;
+  }
+}
